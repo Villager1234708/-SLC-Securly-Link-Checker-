@@ -1,0 +1,118 @@
+:root {
+    --panel-bg: rgba(8, 15, 30, 0.72);
+    --panel-border: rgba(125, 198, 255, 0.3);
+    --text: #eaf4ff;
+    --muted: #b0c9eb;
+    --input-bg: rgba(10, 20, 38, 0.9);
+    --input-border: rgba(123, 176, 255, 0.42);
+    --button-bg: linear-gradient(135deg, #0b72e7, #1ab7ff);
+    --button-hover: linear-gradient(135deg, #0d5ec9, #13a1df);
+    --danger-bg: rgba(255, 230, 230, 0.18);
+    --danger-text: #ffb7b7;
+    --success-bg: rgba(230, 255, 230, 0.12);
+    --success-text: #bff7bf;
+}
+
+html, body {
+    margin: 0;
+    min-height: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background: #000;
+    color: var(--text);
+}
+
+body {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+canvas {
+    position: fixed;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.page {
+    position: relative;
+    z-index: 1;
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 28px 20px 22px;
+    text-align: center;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 16px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(8px);
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--muted);
+}
+
+input[type="text"] {
+    width: 80%;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    background: var(--input-bg);
+    color: var(--text);
+    outline: none;
+    box-sizing: border-box;
+}
+
+input[type="text"]::placeholder {
+    color: rgba(234, 244, 255, 0.6);
+}
+
+button {
+    padding: 10px 20px;
+    background: var(--button-bg);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s ease;
+}
+
+button:hover {
+    background: var(--button-hover);
+}
+
+#result {
+    margin-top: 20px;
+    font-weight: bold;
+    padding: 12px 10px;
+    border-radius: 8px;
+    min-height: 22px;
+}
+
+.blocked {
+    background: var(--danger-bg);
+    color: var(--danger-text);
+    border: 1px solid rgba(255, 120, 120, 0.6);
+}
+
+.safe {
+    background: var(--success-bg);
+    color: var(--success-text);
+    border: 1px solid rgba(120, 255, 120, 0.5);
+}
