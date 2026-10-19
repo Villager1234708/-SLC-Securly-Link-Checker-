@@ -197,10 +197,10 @@ function animate() {
 }
 
 animate();
-
-const blockedKeywords = ['spam', 'games', '.io', 'poker'];
-const blockedKeywordsmore = ['porn', 'proxy'];
-
+//////////////////////////////////////////////////////////////////
+const blockedKeywords = ['spam', 'games', '.io', 'poker','poki','rule34','x.com','twitter.com','tiktok.com',''];
+const blockedKeywordsmore = ['porn', 'proxy','coon'];
+//////////////////////////////////////////////////////////////////
 async function appendSearchToTextFile(url) {
     const cleanedUrl = url.trim().toLowerCase();
     if (!cleanedUrl) return;
