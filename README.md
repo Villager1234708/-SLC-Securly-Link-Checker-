@@ -1,9 +1,3 @@
 # -SLC-Securly-Link-Checker-
 
-
-
-
-.io 
-games
-obiviose blocked keyword 
-poker
+//Adding more blocked keywords to it.//

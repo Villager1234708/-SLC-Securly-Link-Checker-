@@ -11,7 +11,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(47, window.innerWidth / window.innerHeight, 0.1, 100);
+const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 100);
 camera.position.z = 5;
 
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -201,7 +201,28 @@ animate();
 const blockedKeywords = ['spam', 'games', '.io', 'poker'];
 const blockedKeywordsmore = ['porn', 'proxy'];
 
-function checkUrl() {
+async function appendSearchToTextFile(url) {
+    const cleanedUrl = url.trim().toLowerCase();
+    if (!cleanedUrl) return;
+
+    try {
+        const response = await fetch('/api/search-history', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ url: cleanedUrl })
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to save search history');
+        }
+    } catch (error) {
+        console.error('Could not save to text.txt:', error);
+    }
+}
+
+async function checkUrl() {
     const input = document.getElementById('urlInput');
     const resultDiv = document.getElementById('result');
     const url = input.value.trim().toLowerCase();
@@ -217,6 +238,8 @@ function checkUrl() {
         resultDiv.className = 'blocked';
         return;
     }
+
+    await appendSearchToTextFile(url);
 
     const foundKeywords = [];
     const foundBlocked = [];
